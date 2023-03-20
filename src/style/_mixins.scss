@@ -1,0 +1,19 @@
+@mixin item_btn {
+    // display: block;
+    margin-left: 5px;
+
+    border-radius: 5px;
+    padding: 5px;
+}
+
+@mixin btn_change {
+    background-color: lightgreen;
+}
+
+@mixin btn_delete {
+    background-color: lightsalmon;
+}
+
+@mixin btn_restore {
+    background-color: lightblue;
+}

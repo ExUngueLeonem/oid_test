@@ -1,0 +1,85 @@
+.page {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 64px 1fr;
+  // height: 100%;
+  // width: 100%;
+
+  height: 100vh;
+  width: 100vw;
+
+  .header {
+    color: white;
+    background-color: #5c913b;
+    display: flex;
+    justify-content: space-between;
+
+    .buttons {
+      display: flex;
+      
+      button {
+        border: none;
+        margin: 0;
+        cursor: pointer;
+      }
+
+      button,
+      .multibutton {
+        display: grid;
+        grid-template-rows: 1fr auto;
+        background-color: #5c913b;
+        height: 100%;
+        min-width: 64px;
+        z-index: 2;
+        color: white;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+
+        span {
+          font-size: small;
+          padding: 0 0.5rem;
+        }
+
+        &:hover {
+          background-color: whitesmoke;
+          color: #5c913b;
+          transition: all 0.2s;
+        }
+
+        .content {
+          height: 64px;
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          flex-direction: column;
+        }
+      }
+
+      .multibutton {
+        .buttons {
+          visibility: collapse;
+          button {
+            padding: 5px;
+          }
+        }
+
+        &:hover .buttons {
+          visibility: visible;
+          position: absolute;
+          display: contents;
+          transition: all 0.2s;
+        }
+      }
+    }
+  }
+
+  .navigation {
+    grid-row: span 2;
+  }
+
+  .content {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+}

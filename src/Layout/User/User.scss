@@ -1,0 +1,48 @@
+.user-panel {
+  height: 64px;
+  width: 256px;
+  display: flex;
+  font-size: 16px;
+  align-items: center;
+  justify-content: right;
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-right: 10px;
+    cursor: pointer;
+  }
+  
+  .user-button {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-left: 4px solid transparent;
+
+    i {
+      margin-left: 10px;
+      vertical-align: middle;
+      
+    }
+
+    button {
+      text-align: left;
+      cursor: pointer;
+      flex-grow: 1;
+    }
+
+    &:hover {
+      color: green;
+      background-color: #fff;
+      border-radius: 5px;
+      transition: all 0.2s;
+    }
+  }
+
+  &:hover .actions {
+    visibility: visible;
+    opacity: 1;
+  }
+}

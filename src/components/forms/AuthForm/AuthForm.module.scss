@@ -1,0 +1,17 @@
+@import "/src/style/mixins";
+@import "/src/style/variables";
+
+.toggle_form_btn_wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.toggle_form_btn {
+    // display: grid;
+    // grid-template-columns: 1fr 1fr;
+    padding: 5px;
+    text-align: center;
+    &.active {
+        border-bottom: 3px solid $header_color;
+    }
+}

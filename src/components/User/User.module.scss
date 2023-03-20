@@ -1,0 +1,18 @@
+@import "/src/style/mixins";
+@import "/src/style/variables";
+
+.item_btn {
+    @include item_btn;
+}
+
+.btn_change {
+    @include btn_change;
+}
+
+.btn_delete {
+    @include btn_delete;
+}
+
+.btn_restore {
+    @include btn_restore;
+}

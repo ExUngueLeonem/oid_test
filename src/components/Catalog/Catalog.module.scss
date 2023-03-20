@@ -1,0 +1,71 @@
+@import "/src/style/mixins";
+@import "/src/style/variables";
+
+.item {
+    display: flex;
+    justify-content: space-between;
+
+    border: 1px solid grey;
+}
+
+.item_list {
+    overflow-y: auto;
+    height: calc(100vh - 120px);
+}
+
+.amount_wrapper {
+    display: flex;
+    align-items: center;
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 25px;
+        height: 25px;
+        background-color: coral;
+
+        line-height: 0;
+    }
+
+    input {
+        margin: 0 5px;
+        width: 50px;
+    }
+}
+
+.btn_wrapper {
+    display: flex;
+}
+
+
+.item_btn {
+    @include item_btn;
+}
+
+.btn_change {
+    @include btn_change;
+}
+
+.btn_delete {
+    @include btn_delete;
+}
+
+.btn_restore {
+    @include btn_restore;
+}
+
+.search_panel {
+    display: flex;
+    align-items: center;
+
+    padding: 5px;
+}
+
+.search_title{
+
+}
+
+.search_panel_title {
+    padding: 5px;
+}
