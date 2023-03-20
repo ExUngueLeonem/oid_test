@@ -17,7 +17,27 @@ import { observer } from 'mobx-react-lite';
 import { authStore } from './store/AuthStore';
 import CatalogPage from './pages/CatalogPage';
 import Test from './pages/test';
+import { OidcProvider, OidcSecure } from '@axa-fr/react-oidc';
 
+
+
+const OIDC_CLIENT_ID = "service-spa";
+const OIDC_AUTHORITY = "http://192.168.210.244:5072";
+const OIDC_REDIRECT_URL = "http://192.168.210.245:3000/authentication/callback";
+const OIDC_REDIRECT_URL_SILENT = "http://192.168.210.245:3000/authentication/silent-callback";
+const OIDC_SCOPE = "openid profile phone offlineAccess service-api:access";
+const API_BASE = "http://192.168.210.244:5002"
+
+const configuration = {
+  client_id: OIDC_CLIENT_ID,
+  redirect_uri: OIDC_REDIRECT_URL ?? `${window.location.origin}/authentication/callback`,
+  silent_redirect_uri: OIDC_REDIRECT_URL_SILENT ?? `${window.location.origin}/authentication/silent-callback`,
+  scope: OIDC_SCOPE,
+  authority: OIDC_AUTHORITY,
+  storage: localStorage,
+  service_worker_relative_url: "/OidcServiceWorker.js",
+  service_worker_only: false,
+};
 
 function App() {
   const [isInitialized, setIsInitialazed] = useState(false);
@@ -37,21 +57,24 @@ function App() {
       Спиннер загрузки
     </div>
   ) : (
-    <Routes>
-      <Route path="/" element={<AuthPage />} />
-      <Route path="auth" element={<AuthPage />} />
-      <Route path="user" element={<UserPage />} />
-      <Route path="supplier" element={<SupplierPage />} />
-      <Route path="nomenclature" element={<NomenclaturePage />} />
-      <Route path="incomingOrder" element={<IncomingOrderPage />} />
-      <Route path="outcomingOrder" element={<OutcomingOrderPage />} />
-      <Route path="cart" element={<CartPage />} />
-      <Route path="address" element={<AddressPage />} />
-      <Route path="catalog" element={<CatalogPage />} />
+    <OidcProvider configuration={configuration}>
+      <Routes>
+        <Route path="/" element={<AuthPage />} />
+        <Route path="auth" element={<AuthPage />} />
+        <Route path="user" element={<UserPage />} />
+        <Route path="supplier" element={<SupplierPage />} />
+        <Route path="nomenclature" element={<NomenclaturePage />} />
+        <Route path="incomingOrder" element={<IncomingOrderPage />} />
+        <Route path="outcomingOrder" element={<OutcomingOrderPage />} />
+        <Route path="cart" element={<CartPage />} />
+        <Route path="address" element={<AddressPage />} />
+        <Route path="catalog" element={<CatalogPage />} />
 
-      <Route path="authentication/callback" element={<Test />} />
-      <Route path="authentication/silent-callback" element={<Test />} />
-    </Routes>
+        {/* <Route path="authentication/callback" element={<Test />} />
+        <Route path="authentication/silent-callback" element={<Test />} /> */}
+        <Route path="test" element={<Test />} />
+      </Routes>
+    </OidcProvider >
   );
   // { title: "Кабинет поставщика", path: "/supplier", },
   // { title: "Номенклатура", path: "/nomenclature" },

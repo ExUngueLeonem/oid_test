@@ -7,6 +7,7 @@ import User from "./User";
 import "./Page.scss";
 import ShowForm from '../components/forms/ShowForm';
 import { userStore } from '../store/UserStore';
+import { OidcSecure } from '@axa-fr/react-oidc';
 
 const pages: RouteInfo[] = [
   {
@@ -75,27 +76,30 @@ const Page = ({
   // })
 
   useEffect(() => {
-      userStore.getUserInfo();
-      userStore.getCurrentSupplier();
+    userStore.getUserInfo();
+    userStore.getCurrentSupplier();
   }, [])
 
   return (
     <>
-      {/* <ShowForm /> */}
-      {/* <Message /> */}
-      <ShowForm/>
-      <div className={`page ${className ?? ""}`}>
-        <div className="navigation">
-          <Menu pages={routes} logo={"AgroSale"} title={title} />
-        </div>
-        <div className="header">
-          <div className="buttons">
-            {buttons && buttons.filter((x) => x.visible ?? true).map((button, i) => <Button key={`bt_${i}`} {...button} />)}
+      <OidcSecure>
+
+        {/* <ShowForm /> */}
+        {/* <Message /> */}
+        <ShowForm />
+        <div className={`page ${className ?? ""}`}>
+          <div className="navigation">
+            <Menu pages={routes} logo={"AgroSale"} title={title} />
           </div>
-          <User />
+          <div className="header">
+            <div className="buttons">
+              {buttons && buttons.filter((x) => x.visible ?? true).map((button, i) => <Button key={`bt_${i}`} {...button} />)}
+            </div>
+            <User />
+          </div>
+          <div className="content">{children}</div>
         </div>
-        <div className="content">{children}</div>
-      </div>
+      </OidcSecure>
     </>
   );
 }
