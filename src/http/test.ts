@@ -1,4 +1,5 @@
 import axios from "axios";
+import { authStore } from "store/AuthStore";
 import ConfigurationManager from "../config";
 
 export class ConnectionManager {
@@ -10,10 +11,10 @@ export class ConnectionManager {
     constructor() {
         this.api = axios.create({
             withCredentials: false,
-            baseURL: ConfigurationManager.GetInstance().getItem('API_BASE')
+            baseURL: ConfigurationManager.GetInstance().getItem('TEST_API_BASE')
         })
-        
-        this.api.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
+
+        this.api.defaults.headers.common['Authorization'] = `Bearer ${authStore.token}`;
         this.api.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
         this.api.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,PATCH,OPTIONS';
 

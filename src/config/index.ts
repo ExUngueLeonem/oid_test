@@ -3,7 +3,8 @@ export default class ConfigurationManager {
 
     _config = {
         AUTH_API: '',
-        API_BASE: ''
+        API_BASE: '',
+        TEST_API_BASE: ''
     };
 
     async fetch(filename = '/config.json') {
@@ -14,7 +15,7 @@ export default class ConfigurationManager {
         console.log(this._config);
     }
 
-    getItem(key: "AUTH_API" | "API_BASE" , defaultValue = '') {
+    getItem(key: "AUTH_API" | "API_BASE" | "TEST_API_BASE", defaultValue = '') {
         return this._config[key] ?? defaultValue;
     }
 

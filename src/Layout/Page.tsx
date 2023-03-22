@@ -82,7 +82,7 @@ const Page = ({
 
   return (
     <>
-      <OidcSecure>
+      {/* <OidcSecure> */}
 
         {/* <ShowForm /> */}
         {/* <Message /> */}
@@ -99,7 +99,7 @@ const Page = ({
           </div>
           <div className="content">{children}</div>
         </div>
-      </OidcSecure>
+      {/* </OidcSecure> */}
     </>
   );
 }

@@ -13,10 +13,16 @@ class AuthStore {
         isSupplier: false,
     };
 
+    token: string = '';
+
     isAuth = false;
 
     constructor() {
         makeAutoObservable(this, {}, { autoBind: true })
+    }
+
+    setToken(token: string) {
+        this.token = token
     }
 
     setUser(user: IUser) {
@@ -49,9 +55,9 @@ class AuthStore {
         window.location.href = '/auth';
     }
 
-    async registration(values : IRegistrationValues) {
+    async registration(values: IRegistrationValues) {
         try {
-            let res = await ConnectionManager.GetInstance().GetClient().post('/Account',  values )
+            let res = await ConnectionManager.GetInstance().GetClient().post('/Account', values)
             return res
         } catch (error: any) {
             if (error) errorCatch(error);
