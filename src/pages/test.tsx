@@ -1,16 +1,15 @@
 import { useOidc } from '@axa-fr/react-oidc';
 import { observer } from 'mobx-react-lite';
 import { NavLink } from 'react-router-dom';
+import { testStore } from 'store/TestStore';
 
 
 function Test() {
     const { isAuthenticated, login, logout   /* , renewTokens */ } = useOidc();
     console.log("isAuthenticated", isAuthenticated);
-    // console.log(login)
 
     const loginHandler = () => {
         window.location.href = "http://192.168.210.244:5072/login?returnUrl=http://192.168.210.245:3001/authentication/callback"
-
         // http://192.168.210.245:3001/authentication/callback
     }
 
@@ -45,6 +44,8 @@ function Test() {
                         </button>
                     </>
                 )}
+                <br />
+                <button type="button" onClick={() => testStore.postIntegration()}>postIntegration</button>
 
             </div>
         </>

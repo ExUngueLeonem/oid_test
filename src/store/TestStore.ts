@@ -15,13 +15,34 @@ class TestStore {
 
     async getIntegrations() {
         try {
-            let res = await ConnectionManager.GetInstance().GetClient().get(`integration`);
+            let res = await ConnectionManager.GetInstance().GetClient().get(`integrations`);
             this.setIntegration(res.data);
             return res;
         } catch (error: any) {
             console.log(error)
         }
     }
+
+    async postIntegration() {
+        const data = {
+            "type": 3,
+            "name": "IIKO Server",
+            "login": "admin",
+            "Password":"admin",
+            "HostPort":"http://ffood.54fz.club/resto"
+        }
+
+        try {
+
+
+             let res = await ConnectionManager.GetInstance().GetClient().post(`integrations`, data);
+            // this.setIntegration(res.data);
+            return res;
+        } catch (error: any) {
+            console.log(error)
+        }
+    }
+
 
 }
 

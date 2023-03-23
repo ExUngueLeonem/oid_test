@@ -1,5 +1,5 @@
 {
     "AUTH_API": "https://dev04.dedibyte.ru/api/v1",
     "API_BASE": "https://dev04.dedibyte.ru/api/v1",
-    "TEST_API_BASE": "http://192.168.210.244:5002/v1"
+    "TEST_API_BASE": "https://192.168.210.244:5003/v1"
 }
