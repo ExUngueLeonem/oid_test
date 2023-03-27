@@ -14,12 +14,6 @@ export class ConnectionManager {
             baseURL: ConfigurationManager.GetInstance().getItem('TEST_API_BASE')
         })
 
-        this.api.defaults.headers.common['Authorization'] = `Bearer ${authStore.token}`;
-        this.api.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-        this.api.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,PATCH,OPTIONS';
-
-        // this.api.defaults.headers.common['withCredentials'] = true;
-
         this.api.interceptors.response.use(
             (config) => {
                 return config;
@@ -37,10 +31,18 @@ export class ConnectionManager {
                 throw error;
             }
         );
+
+        // this.api.interceptors.request.use((config: any) => {
+        //     if (authStore.token) {
+        //         config.headers = { ...config.headers, authorization: `bearer ${authStore.token}` };
+        //     }
+
+        //     return config;
+        // });
     }
 
     GetClient() {
-        this.api.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
+        this.api.defaults.headers.common['Authorization'] = `Bearer ${authStore.token}`;
         return this.api;
     }
 

@@ -1,5 +1,5 @@
-import { ConnectionManager } from 'http/test';
-import { makeAutoObservable } from 'mobx';
+import {ConnectionManager} from 'http/test';
+import {makeAutoObservable} from 'mobx';
 
 class TestStore {
 
@@ -33,11 +33,8 @@ class TestStore {
         }
 
         try {
-
-
-             let res = await ConnectionManager.GetInstance().GetClient().post(`integrations`, data);
             // this.setIntegration(res.data);
-            return res;
+            return await ConnectionManager.GetInstance().GetClient().post(`integrations`, data);
         } catch (error: any) {
             console.log(error)
         }

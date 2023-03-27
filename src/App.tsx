@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 // import logo from './logo.svg';
 import './App.scss';
 import ConfigurationManager from './config';
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
-import AuthPage from './pages/AuthPage';
+import { Route, Routes } from 'react-router-dom';
 
 import SupplierPage from './pages/SupplierPage';
 
@@ -33,6 +32,7 @@ function App() {
     }
   }, [accessToken]);
 
+
   useEffect(() => {
     if (!isInitialized) {
       ConfigurationManager.GetInstance()
@@ -55,7 +55,7 @@ function App() {
       {/* <Route path="auth" element={<AuthPage />} /> */}
       <Route path="user" element={<UserPage />} />
       <Route path="supplier" element={<SupplierPage />} />
-      <Route path="nomenclature" element={<NomenclaturePage />} />
+      <Route path="nomenclature" element={<NomenclaturePage />}         />
       <Route path="incomingOrder" element={<IncomingOrderPage />} />
       <Route path="outcomingOrder" element={<OutcomingOrderPage />} />
       <Route path="cart" element={<CartPage />} />
@@ -67,7 +67,7 @@ function App() {
       <Route path="test" element={<Test />} />
       <Route path="test/integrations" element={<Integrations />} />
     </Routes>
-    
+
   );
 
 }
